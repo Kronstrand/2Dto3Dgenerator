@@ -7,7 +7,7 @@ using UnityEngine;
 public class GenerateData : MonoBehaviour {
 
 
-    int i = 1;
+    public int i = 2013;
     float timer = 0;
     String filePath = "C:/Users/kronstrand/Documents/Data/data.csv";
     String filePathTarget = "C:/Users/kronstrand/Documents/Data/target/target_";
