@@ -7,12 +7,10 @@ using UnityEngine;
 public class GenerateData : MonoBehaviour {
 
 
-    public int i = 2013;
+    int i = 0;
     float timer = 0;
-    String filePath = "C:/Users/kronstrand/Documents/Data/data.csv";
     String filePathTarget = "C:/Users/kronstrand/Documents/Data/target/target_";
-    string filePathInput = "C:/Users/kronstrand/Documents/Data/input/input_";
-
+	string filePathInput = "C:/Users/kronstrand/Documents/Data/input/input_";
 
     Camera playerCam;
     Camera mapCam;
@@ -23,8 +21,6 @@ public class GenerateData : MonoBehaviour {
 
         playerCam = GameObject.Find("Player/MainCamera").GetComponent<Camera>();
         mapCam = GameObject.Find("MapCamHolder/MapCam").GetComponent<Camera>();
-
-
 		
 	}
 	
@@ -48,17 +44,10 @@ public class GenerateData : MonoBehaviour {
     {
         yield return new WaitForEndOfFrame();
 
-        // set the sizes for the image to be captured
-        //int imgWidth = Convert.ToInt32(Math.Floor(Screen.width * 0.5f));
-        //int imgHeight = Convert.ToInt32(Math.Floor(Screen.height * 0.8f));
-
         //take a screenshot and store as a texture
         Texture2D tex = new Texture2D(playerCam.pixelWidth, playerCam.pixelHeight);
         tex.ReadPixels(new Rect(playerCam.pixelRect.x, playerCam.pixelRect.y, playerCam.pixelWidth, playerCam.pixelHeight), 0, 0);
         tex.Apply();
-
-        //save in image in csv
-        //File.AppendAllText(filePath, toStringCSV(tex.EncodeToJPG()));
 
         //save the screenshot as jpg
         File.WriteAllBytes(filePathTarget + i + ".jpg", tex.EncodeToJPG());
